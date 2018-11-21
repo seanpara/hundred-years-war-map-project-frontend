@@ -29,6 +29,7 @@ export default class Map extends Component {
     console.log("View state is",viewState )
       return (
         <ReactMapGL
+          {...viewState}
            onViewStateChange={(viewport) => {
              // console.log("Viewport is ", viewport)
            const {width, height, latitude, longitude, zoom} = viewport;
@@ -37,7 +38,7 @@ export default class Map extends Component {
           mapStyle={ this.props.mapData[0] == undefined ?
             "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData[0].url
           }
-          mapboxApiAccessToken={TOKEN} {...viewState}/>
+          mapboxApiAccessToken={TOKEN} />
       );
     }
 }// end of map compoent

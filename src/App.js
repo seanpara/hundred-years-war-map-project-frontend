@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Map from "./Map.js"
+import MapDescription from "./MapDescription.js"
+
 
 class App extends Component {
 
@@ -37,7 +39,11 @@ class App extends Component {
 
   render() {
     return (
-      <Map mapData={this.state.mapData === [] ? null: this.state.mapData}/>
+      <>
+        <Map mapData={this.state.mapData === [] ? null: this.state.mapData}/>
+        <MapDescription description={this.state.mapDecriptions[0] === undefined ? "Placeholder description" :
+        this.state.mapDecriptions[0] }/>
+      </>
     );
   }
 }
