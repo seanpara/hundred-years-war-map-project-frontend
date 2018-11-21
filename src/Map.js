@@ -11,20 +11,22 @@ const navStyle = {
   padding: '10px'
 };
 export default class Map extends Component {
-  // constructor(props) {
-  //     super(props);
-  //     this.state = {
-  //       viewport: {
-  //         latitude: 50,
-  //         longitude: -3,
-  //         zoom: 3,
-  //         bearing: 0,
-  //         pitch: 0,
-  //         width: 500,
-  //         height: 500,
-  //       }
-  //     };
-  //   }
+  constructor(props) {
+      super(props);
+      this.state = {
+        viewport: {
+          viewState:{
+            latitude: 50,
+            longitude: -3,
+            zoom: 3.5,
+            // bearing: 0,
+            // pitch: 0,
+            width: 400,
+            height: 400
+          }
+        }
+      };
+    }
   //
   // handleViewPortChange = (viewport) => {
   //   const {width, height, latitude, longitude, zoom} = viewport;
@@ -33,23 +35,19 @@ export default class Map extends Component {
   //   })
   // }
 
-
   render() {
+    const {state:{viewport: {viewState}}} = this
+    console.log("View state is",viewState )
       return (
-        <>
         <ReactMapGL
-           width={400}
-           height={400}
-           latitude={50}
-           longitude={-3}
-           zoom={3.5}
            onViewStateChange={(viewport) => {
+             console.log("Running")
+             console.log("Viewport is ", viewport)
            const {width, height, latitude, longitude, zoom} = viewport;
-           // call `setState` and use the state to update the map.
+           this.setState({viewport})
           }}
           mapStyle="mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f"
-          mapboxApiAccessToken={TOKEN}/>
-          </>
+          mapboxApiAccessToken={TOKEN} {...viewState}/>
       );
     }
 }// end of map compoent
