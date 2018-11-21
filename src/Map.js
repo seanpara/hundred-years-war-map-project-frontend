@@ -21,19 +21,13 @@ export default class Map extends Component {
             zoom: 3.5,
             // bearing: 0,
             // pitch: 0,
-            width: 400,
-            height: 400
+            width: 800,
+            height: 800
           }
         }
       };
     }
-  //
-  // handleViewPortChange = (viewport) => {
-  //   const {width, height, latitude, longitude, zoom} = viewport;
-  //   this.setState((state) => {
-  //     return {width, height, latitude, longitude, zoom}
-  //   })
-  // }
+
 
   render() {
     const {state:{viewport: {viewState}}} = this
@@ -41,7 +35,6 @@ export default class Map extends Component {
       return (
         <ReactMapGL
            onViewStateChange={(viewport) => {
-             console.log("Running")
              console.log("Viewport is ", viewport)
            const {width, height, latitude, longitude, zoom} = viewport;
            this.setState({viewport})
