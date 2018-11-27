@@ -4,6 +4,7 @@ import './App.css';
 import Map from "./Map.js"
 import MapDescription from "./MapDescription.js"
 import MapContainer from "./MapContainer"
+import NavBar from "./NavBar"
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
@@ -44,6 +45,7 @@ class App extends Component {
 
       <Router>
         <>
+        <NavBar/>
         <Route
         exact path="/"
         render={(props) => <MapContainer {...props}
