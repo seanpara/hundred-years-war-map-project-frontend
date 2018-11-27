@@ -4,6 +4,8 @@ import './App.css';
 import Map from "./Map.js"
 import MapDescription from "./MapDescription.js"
 import MapContainer from "./MapContainer"
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 class App extends Component {
 
@@ -39,15 +41,42 @@ class App extends Component {
 
   render() {
     return (
-      <>
-      {this.state.mapData === [] && this.state.mapDecriptions[0] === undefined?  null :
-        <MapContainer
-          mapData= {this.state.mapData}
-          mapDescription= {this.state.mapDecriptions[0]}
-        />}
-      </>
+
+      <Router>
+        <>
+        <Route
+        exact path="/"
+        render={(props) => <MapContainer {...props}
+          mapData={this.state.mapData[1]}
+          mapDescription={this.state.mapDecriptions[1]}
+          /> }
+        />
+        <Route
+        exact path="/1399"
+        render={(props) => <MapContainer {...props}
+          mapData={this.state.mapData[0]}
+          mapDescription={this.state.mapDecriptions[0]}
+          /> }
+        />
+        <Route
+        exact path="/1429"
+        render={(props) => <MapContainer {...props}
+          mapData={this.state.mapData[1]}
+          mapDescription={this.state.mapDecriptions[1]}
+          /> }
+        />
+        </>
+      </Router>
+
+
     );
   }
 }
 
 export default App;
+
+
+// {this.state.mapData.length === 0 && this.state.mapDecriptions[0] === undefined ?  null :
+//   <MapContainer
+//     }
+//   />}

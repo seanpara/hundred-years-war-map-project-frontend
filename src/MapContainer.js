@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 class MapContainer extends Component {
 
   render() {
+    console.log(this.props);
     return (
       <>
         <Map mapData={ this.props.mapData} />

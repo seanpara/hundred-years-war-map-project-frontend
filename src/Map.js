@@ -35,8 +35,8 @@ export default class Map extends Component {
            const {width, height, latitude, longitude, zoom} = viewport;
            this.setState({viewport})
           }}
-          mapStyle={ this.props.mapData[0] == undefined ?
-            "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData[0].url
+          mapStyle={ this.props.mapData == undefined ?
+            "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData.url
           }
           mapboxApiAccessToken={TOKEN} />
       );
