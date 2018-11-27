@@ -36,8 +36,7 @@ export default class Map extends Component {
            this.setState({viewport})
           }}
           mapStyle={ this.props.mapData[0] == undefined ?
-            "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData[0].url
-          }
+            "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData[0].url}
           mapboxApiAccessToken={TOKEN} />
       );
     }
