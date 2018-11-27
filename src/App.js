@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Map from "./Map.js"
 import MapDescription from "./MapDescription.js"
-
+import MapContainer from "./MapContainer"
 
 class App extends Component {
 
@@ -28,7 +28,7 @@ class App extends Component {
     .then( (descriptionRes) => {
       this.setState((state) => {
         return {mapDecriptions: descriptionRes}
-      }, () => console.log(this.state.mapDecriptions))
+      })
     })
   }
 
@@ -40,9 +40,11 @@ class App extends Component {
   render() {
     return (
       <>
-        <Map mapData={this.state.mapData === [] ? null: this.state.mapData}/>
-        <MapDescription description={this.state.mapDecriptions[0] === undefined ? "Placeholder description" :
-        this.state.mapDecriptions[0] }/>
+      {this.state.mapData === [] && this.state.mapDecriptions[0] === undefined?  null :
+        <MapContainer
+          mapData= {this.state.mapData}
+          mapDescription= {this.state.mapDecriptions[0]}
+        />}
       </>
     );
   }

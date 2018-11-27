@@ -13,10 +13,10 @@ class MapDescription extends Component {
   }
 
   render() {
-    console.log(this.props.description);
+    console.log(this.props.mapDescription);
     return (
       <div>
-      {this.props.description === "Placeholder description" ? "This will be a description soon" : this.props.description.text }
+      {this.props.mapDescription === undefined ? "This will be a description soon" : this.props.mapDescription.text }
       </div>
     );
   }
@@ -24,3 +24,6 @@ class MapDescription extends Component {
 }
 
 export default MapDescription;
+
+
+//
