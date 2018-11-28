@@ -36,6 +36,7 @@ export default class Map extends Component {
 
   handlePinClick = (event) => {
     this.setState({popupInfo: {longitude: 2.3522, latitude: 48.8566 }})
+    this.props.renderEventDescription("This is a description of a dope historical event")
   }
 
   renderMarker = (longitude, latitude) => {
@@ -55,7 +56,7 @@ export default class Map extends Component {
         anchor="top"
         longitude={popupInfo.longitude}
         latitude={popupInfo.latitude}
-        onClose={() => this.setState({popupInfo: null})} >
+        onClose={() => this.setState({popupInfo: null}, () => this.props.removeEventDescription())} >
         <PopUpInfo name={"Agincourt"} wiki_url={`https://en.wikipedia.org/wiki/Battle_of_Agincourt`}
         img_url={`https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Schlacht_von_Azincourt.jpg/300px-Schlacht_von_Azincourt.jpg`}
         />
