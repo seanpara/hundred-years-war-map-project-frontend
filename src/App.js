@@ -21,7 +21,7 @@ class App extends Component {
     .then( (mapRes) => {
       this.setState((state) => {
         return {mapData: mapRes}
-      })
+      }, () => console.log(this.state.mapData[0].map_descriptions[0]))
     })
   }
 
@@ -57,14 +57,14 @@ class App extends Component {
         exact path="/1399"
         render={(props) => <MapContainer {...props}
           mapData={this.state.mapData[0]}
-          mapDescription={this.state.mapDecriptions[0]}
+          mapDescription={this.state.mapData[0].map_descriptions[0]}
           /> }
         />
         <Route
         exact path="/1429"
         render={(props) => <MapContainer {...props}
           mapData={this.state.mapData[1]}
-          mapDescription={this.state.mapDecriptions[1]}
+          mapDescription={this.state.mapData[1].map_descriptions[0]}
           /> }
         />
         </>
