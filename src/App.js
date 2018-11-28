@@ -76,9 +76,3 @@ class App extends Component {
 }
 
 export default App;
-
-
-// {this.state.mapData.length === 0 && this.state.mapDecriptions[0] === undefined ?  null :
-//   <MapContainer
-//     }
-//   />}
