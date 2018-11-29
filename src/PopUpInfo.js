@@ -9,10 +9,7 @@ export default class CityInfo extends PureComponent {
     return (
       <div>
         <div>
-          {this.props.name} | <a
-          href={this.props.wiki_url}>
-            More about {this.props.name}
-          </a>
+          {this.props.name}
         </div>
         <img src={this.props.img_url} />
       </div>

@@ -44,30 +44,30 @@ class App extends Component {
     return (
 
       <Router>
-        <>
-        <NavBar/>
-        <Route
-        exact path="/"
-        render={(props) => <MapContainer {...props}
-          mapData={this.state.mapData[1]}
-          mapDescription={this.state.mapDecriptions[1]}
-          /> }
-        />
-        <Route
-        exact path="/1399"
-        render={(props) => <MapContainer {...props}
-          mapData={this.state.mapData[0]}
-          mapDescription={this.state.mapData[0].map_descriptions[0]}
-          /> }
-        />
-        <Route
-        exact path="/1429"
-        render={(props) => <MapContainer {...props}
-          mapData={this.state.mapData[1]}
-          mapDescription={this.state.mapData[1].map_descriptions[0]}
-          /> }
-        />
-        </>
+        <div className="App">
+          <NavBar/>
+          <Route
+            exact path="/"
+            render={(props) => <MapContainer {...props}
+              mapData={this.state.mapData[1]}
+              mapDescription={this.state.mapDecriptions[1]}
+              /> }
+          />
+          <Route
+            exact path="/1399"
+            render={(props) => <MapContainer {...props}
+              mapData={this.state.mapData[0]}
+              mapDescription={this.state.mapData[0].map_descriptions[0]}
+              /> }
+          />
+          <Route
+            exact path="/1429"
+            render={(props) => <MapContainer {...props}
+              mapData={this.state.mapData[1]}
+              mapDescription={this.state.mapData[1].map_descriptions[0]}
+              /> }
+          />
+        </div>
       </Router>
 
 
