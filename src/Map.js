@@ -18,13 +18,13 @@ export default class Map extends Component {
       super(props);
       this.state = {
         viewport: {
-            latitude: 50.4,
+            latitude: 49.5,
             longitude: -1.25,
-            zoom: 4.4,
+            zoom: 4.7,
             bearing: 0,
             pitch: 0,
-            width: 800,
-            height: 800
+            width: 700,
+            height: 900
         },
         popupInfo: null
       };

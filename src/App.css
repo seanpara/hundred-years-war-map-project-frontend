@@ -1,5 +1,29 @@
 .App {
   background-color: #778899;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.map-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar {
+  display: inline-block;
+   margin: 0;
+   font-size: 25px;
+   color: red;
+}
+
+.nav-item {
+  display: inline;
+  width: 100px;
+  margin-right: 20px;
+  float: right;
+  padding: 20px;
 }
 
 .App-logo {

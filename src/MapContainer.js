@@ -20,12 +20,12 @@ class MapContainer extends Component {
   render() {
     console.log(this.props);
     return (
-      <>
+      <div className="map-container">
         <Map renderEventDescription={this.renderEventDescription} removeEventDescription={this.removeEventDescription}
         mapData={ this.props.mapData} />
         <MapDescription mapDescription={this.props.mapDescription}/>
         {this.state.showEventDescription ? <HistoryEventDescription text={this.state.historyEventDescriptionText}/> : null}
-      </>
+      </div>
     );
   }
 
