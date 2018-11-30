@@ -1,7 +1,7 @@
 .App {
   background-color: #778899;
   background-size: cover;
-  height: 100vh;
+  height: 105vh;
   width: 100vw;
   overflow: hidden;
 }
@@ -9,6 +9,12 @@
 .map-container {
   justify-content: center;
   align-items: center;
+
+}
+
+.react-mapbox {
+  width: 20%;
+  left: 40%; 
 }
 
 .navbar {

@@ -7,7 +7,6 @@ import MapContainer from "./MapContainer"
 import NavBar from "./NavBar"
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-
 class App extends Component {
 
   state = {
@@ -21,7 +20,7 @@ class App extends Component {
     .then( (mapRes) => {
       this.setState((state) => {
         return {mapData: mapRes}
-      }, () => console.log(this.state.mapData[0].map_descriptions[0]))
+      })
     })
   }
 

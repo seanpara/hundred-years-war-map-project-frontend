@@ -35,15 +35,16 @@ export default class Map extends Component {
   }
 
   handlePinClick = (event) => {
-    this.setState({popupInfo: {longitude: 2.3522, latitude: 48.8566 }})
+    this.setState({popupInfo: {latitude: 48.8566, longitude: 2.3522}})
     this.props.renderEventDescription("This is a description of a dope historical event")
   }
 
-  renderMarker = (longitude, latitude) => {
+  renderMarker = (latitude, longitude) => {
     return (
       <Marker
+        latitude={latitude}
         longitude={longitude}
-        latitude={latitude}>
+        >
         <Pin handlePinClick={this.handlePinClick}/>
       </Marker>
     );
@@ -54,8 +55,8 @@ export default class Map extends Component {
     return popupInfo && (
       <Popup tipSize={3}
         anchor="top"
-        longitude={popupInfo.longitude}
         latitude={popupInfo.latitude}
+        longitude={popupInfo.longitude}
         onClose={() => this.setState({popupInfo: null}, () => this.props.removeEventDescription())} >
         <PopUpInfo name={"Agincourt"} wiki_url={`https://en.wikipedia.org/wiki/Battle_of_Agincourt`}
         img_url={`https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Schlacht_von_Azincourt.jpg/300px-Schlacht_von_Azincourt.jpg`}
@@ -68,23 +69,24 @@ export default class Map extends Component {
     const {viewport} = this.state
     // console.log("View state is",viewState )
       return (
-        <MapGL
-          {...viewport}
-          onViewportChange={this.updateViewport}
+        <div className="react-mapbox">
+          <MapGL
+            {...viewport}
+            onViewportChange={this.updateViewport}
 
-          mapStyle={ this.props.mapData == undefined ?
-            "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData.url
-          }
-          mapboxApiAccessToken={TOKEN}
-           >
-          {this.renderMarker(2.3522, 48.8566)}
-          {this.renderPopup()}
-          <div className="nav" style={navStyle}>
-           <NavigationControl onViewportChange={this.updateViewport} />
-         </div>
+            mapStyle={ this.props.mapData === undefined ?
+              "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData.url
+            }
+            mapboxApiAccessToken={TOKEN}
+             >
+            {this.renderMarker(48.8566, 2.3522)}
+            {this.renderPopup()}
+            <div className="nav" style={navStyle}>
+             <NavigationControl onViewportChange={this.updateViewport} />
+           </div>
 
-      </MapGL>
-
+          </MapGL>
+          </div>
       );
     }
 }// end of map compoent
