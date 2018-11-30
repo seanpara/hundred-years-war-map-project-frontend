@@ -74,11 +74,11 @@ export default class Map extends Component {
     const {viewport} = this.state
     // console.log("View state is",viewState )
       return (
-        <div className="react-mapbox">
+        <div >
           <MapGL
             {...viewport}
             onViewportChange={this.updateViewport}
-
+            className="react-mapbox"
             mapStyle={ this.props.mapData === undefined ?
               "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData.url
             }

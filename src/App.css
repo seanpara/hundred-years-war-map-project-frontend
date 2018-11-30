@@ -9,12 +9,19 @@
 .map-container {
   justify-content: center;
   align-items: center;
-
+  /* width: 20%;
+  left: 100%; */
 }
 
 .react-mapbox {
-  width: 20%;
-  left: 40%; 
+  /* width: 20%;
+  left: 100%;
+  right: 100%; */
+}
+
+.pop-up-image {
+  height: 200px;
+  width: auto;
 }
 
 .navbar {
