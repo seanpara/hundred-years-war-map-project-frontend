@@ -11,7 +11,8 @@ class App extends Component {
 
   state = {
     mapData: [],
-    mapDecriptions: []
+    mapDecriptions: [],
+    historicalEvents: []
   }
 
   getMapData = () => {

@@ -34,38 +34,43 @@ export default class Map extends Component {
     this.setState({viewport});
   }
 
-  handlePinClick = (event) => {
-    this.setState({popupInfo: {latitude: 48.8566, longitude: 2.3522}})
-    this.props.renderEventDescription("This is a description of a dope historical event")
+
+  renderMarkers = () => {
+    return this.props.mapData.historical_events.map((historicalEvent) => {
+      return (
+        <Marker
+          key={historicalEvent.id}
+          latitude={historicalEvent.latitude}
+          longitude={historicalEvent.longitude}
+          >
+          <Pin handlePinClick={() => this.handlePinClick(historicalEvent)}/>
+        </Marker>
+      )
+    })
   }
 
-  renderMarker = (latitude, longitude) => {
-    return (
-      <Marker
-        latitude={latitude}
-        longitude={longitude}
-        >
-        <Pin handlePinClick={this.handlePinClick}/>
-      </Marker>
-    );
+  handlePinClick = (historicalEvent) => {
+    // console.log(historicalEvent)
+    this.setState({popupInfo: historicalEvent },() => this.props.renderEventDescription(historicalEvent.description))
+
   }
 
   renderPopup = () => {
     const {popupInfo} = this.state;
+    // console.log(popupInfo);
     return popupInfo && (
       <Popup tipSize={3}
         anchor="top"
         latitude={popupInfo.latitude}
         longitude={popupInfo.longitude}
         onClose={() => this.setState({popupInfo: null}, () => this.props.removeEventDescription())} >
-        <PopUpInfo name={"Agincourt"} wiki_url={`https://en.wikipedia.org/wiki/Battle_of_Agincourt`}
-        img_url={`https://upload.wikimedia.org/wikipedia/commons/thumb/b/be/Schlacht_von_Azincourt.jpg/300px-Schlacht_von_Azincourt.jpg`}
-        />
+        <PopUpInfo title={popupInfo.title} image_url={popupInfo.image}/>
       </Popup>
     );
   }
 
   render() {
+    this.props.mapData === undefined ? console.log("map data isn't here") : console.log(this.props.mapData.historical_events)
     const {viewport} = this.state
     // console.log("View state is",viewState )
       return (
@@ -79,7 +84,7 @@ export default class Map extends Component {
             }
             mapboxApiAccessToken={TOKEN}
              >
-            {this.renderMarker(48.8566, 2.3522)}
+            {this.props.mapData === undefined ? null : this.renderMarkers()}
             {this.renderPopup()}
             <div className="nav" style={navStyle}>
              <NavigationControl onViewportChange={this.updateViewport} />

@@ -19,6 +19,7 @@ class MapContainer extends Component {
     this.setState({showEventDescription: false, historyEventDescriptionText: "" })
   }
   render() {
+    // console.log(this.props)
     return (
       <div className="map-container">
         <Map renderEventDescription={this.renderEventDescription} removeEventDescription={this.removeEventDescription}
