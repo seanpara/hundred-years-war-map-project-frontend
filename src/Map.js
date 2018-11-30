@@ -64,13 +64,13 @@ export default class Map extends Component {
         latitude={popupInfo.latitude}
         longitude={popupInfo.longitude}
         onClose={() => this.setState({popupInfo: null}, () => this.props.removeEventDescription())} >
-        <PopUpInfo title={popupInfo.title} image_url={popupInfo.image}/>
+        <PopUpInfo popupInfo={popupInfo}/>
       </Popup>
     );
   }
 
   render() {
-    this.props.mapData === undefined ? console.log("map data isn't here") : console.log(this.props.mapData.historical_events)
+    // this.props.mapData === undefined ? console.log("map data isn't here") : console.log(this.props.mapData.historical_events)
     const {viewport} = this.state
     // console.log("View state is",viewState )
       return (

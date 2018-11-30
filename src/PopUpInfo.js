@@ -8,9 +8,9 @@ export default class PopUpInfo extends PureComponent {
     return (
       <div>
         <div>
-          {this.props.title}
+          {this.props.popupInfo.title} | {this.props.popupInfo.year}
         </div>
-        <img className="pop-up-image"src={this.props.image_url} />
+        <img className="pop-up-image"src={this.props.popupInfo.image} />
       </div>
     );
   }

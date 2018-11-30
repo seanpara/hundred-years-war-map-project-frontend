@@ -6,6 +6,7 @@ export default class NewHistoricalEventForm extends Component {
   state = {
     title: "",
     description: "",
+    year: "",
     latitude: '',
     longitude: '',
     selectedFile: null
@@ -57,6 +58,14 @@ export default class NewHistoricalEventForm extends Component {
               name="description"
               type="text"
               value={this.state.description}
+              onChange={this.handleInputChange}
+            />
+          </label>
+          <label>Year
+            <input
+              name="year"
+              type="number"
+              value={this.state.year}
               onChange={this.handleInputChange}
             />
           </label>

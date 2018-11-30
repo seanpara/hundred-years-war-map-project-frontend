@@ -64,7 +64,7 @@ class App extends Component {
             exact path="/1429"
             render={(props) => <MapContainer {...props}
               mapData={this.state.mapData[1]}
-              mapDescription={this.state.mapData[1].map_descriptions[0]}
+              mapDescription={this.state.mapData === undefined ? "description goes here" :this.state.mapData[1].map_descriptions[0] }
               /> }
           />
         </div>
