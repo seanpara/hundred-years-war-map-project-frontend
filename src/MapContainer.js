@@ -26,7 +26,8 @@ class MapContainer extends Component {
         mapData={ this.props.mapData} />
         <MapDescription mapDescription={this.props.mapDescription}/>
         {this.state.showEventDescription ? <HistoryEventDescription text={this.state.historyEventDescriptionText}/> : null}
-        {this.props.mapData === undefined ? null :<NewHistoricalEventForm mapId = {this.props.mapData.id} />}
+        {this.props.mapData === undefined ? null :<NewHistoricalEventForm               addHistoricalEventToMapDataState={this.props.addHistoricalEventToMapDataState}
+        mapId = {this.props.mapData.id} />}
 
       </div>
     );

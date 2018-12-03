@@ -37,7 +37,19 @@ export default class NewHistoricalEventForm extends Component {
       body: formUpload
     })
     .then(r => r.json())
-    .then(r => console.log(r, formUpload))
+    .then((r) => {
+      // console.log(r)
+      this.setState({
+        title: "",
+        description: "",
+        year: "",
+        latitude: '',
+        longitude: '',
+        selectedFile: null
+      }, this.props.addHistoricalEventToMapDataState(r))
+
+      //call function to change state here
+    })
     event.target.reset()
   }
 
@@ -73,7 +85,7 @@ export default class NewHistoricalEventForm extends Component {
             <input
               name="latitude"
               type="number"
-              step="0.01"
+              step="0.0001"
               value={this.state.latitude}
               onChange={this.handleInputChange}
             />
@@ -82,7 +94,7 @@ export default class NewHistoricalEventForm extends Component {
             <input
               name="longitude"
               type="number"
-              step="0.01"
+              step="0.0001"
               value={this.state.longitude}
               onChange={this.handleInputChange}
             />

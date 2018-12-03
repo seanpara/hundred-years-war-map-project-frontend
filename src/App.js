@@ -11,8 +11,7 @@ class App extends Component {
 
   state = {
     mapData: [],
-    mapDecriptions: [],
-    historicalEvents: []
+    mapDecriptions: []
   }
 
   getMapData = () => {
@@ -21,7 +20,7 @@ class App extends Component {
     .then( (mapRes) => {
       this.setState((state) => {
         return {mapData: mapRes}
-      })
+      }, () => console.log(this.state.mapData))
     })
   }
 
@@ -33,6 +32,20 @@ class App extends Component {
         return {mapDecriptions: descriptionRes}
       })
     })
+  }
+
+  addHistoricalEventToMapDataState = (historicalEventObj) => {
+    console.log(historicalEventObj)
+    this.setState((state) => {
+      mapData: this.state.mapData.map((mapBoxMap) => {
+        if (mapBoxMap.id === historicalEventObj.map_id){
+          return mapBoxMap.historical_events = [...mapBoxMap.historical_events, historicalEventObj]
+        }
+        else {
+          return mapBoxMap
+        }
+      })
+    }, () => console.log(this.state))
   }
 
   componentDidMount(){
@@ -51,20 +64,23 @@ class App extends Component {
             render={(props) => <MapContainer {...props}
               mapData={this.state.mapData[1]}
               mapDescription={this.state.mapDecriptions[1]}
+              addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
               /> }
           />
           <Route
             exact path="/1399"
             render={(props) => <MapContainer {...props}
               mapData={this.state.mapData[0]}
-              mapDescription={this.state.mapData[0].map_descriptions[0]}
+              mapDescription={this.state.mapDecriptions[0]}
+              addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
               /> }
           />
           <Route
             exact path="/1429"
             render={(props) => <MapContainer {...props}
               mapData={this.state.mapData[1]}
-              mapDescription={this.state.mapData === undefined ? "description goes here" :this.state.mapData[1].map_descriptions[0] }
+              mapDescription={this.state.mapDecriptions[1]}
+              addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
               /> }
           />
         </div>
