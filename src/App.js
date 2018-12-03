@@ -20,7 +20,7 @@ class App extends Component {
     .then( (mapRes) => {
       this.setState((state) => {
         return {mapData: mapRes}
-      }, () => console.log(this.state.mapData))
+      })
     })
   }
 
@@ -35,17 +35,22 @@ class App extends Component {
   }
 
   addHistoricalEventToMapDataState = (historicalEventObj) => {
-    console.log(historicalEventObj)
+    console.log("H event is", historicalEventObj)
+    console.log("Old state is", this.state)
     this.setState((state) => {
-      mapData: this.state.mapData.map((mapBoxMap) => {
-        if (mapBoxMap.id === historicalEventObj.map_id){
-          return mapBoxMap.historical_events = [...mapBoxMap.historical_events, historicalEventObj]
-        }
-        else {
-          return mapBoxMap
-        }
-      })
-    }, () => console.log(this.state))
+      return {
+        mapData: this.state.mapData.map((mapBoxMap) => {
+          if (mapBoxMap.id === historicalEventObj.map_id){
+            const newMapBox = {...mapBoxMap}
+            newMapBox.historical_events = [...mapBoxMap.historical_events, historicalEventObj]
+            return newMapBox
+          }
+          else {
+            return mapBoxMap
+          }
+        })
+      }
+    }, () => console.log("New state is", this.state))
   }
 
   componentDidMount(){

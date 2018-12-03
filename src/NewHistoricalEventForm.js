@@ -8,8 +8,8 @@ export default class NewHistoricalEventForm extends Component {
     description: "",
     year: "",
     latitude: '',
-    longitude: '',
-    selectedFile: null
+    longitude: ''
+    // selectedFile: null
   }
 
   handleInputChange = (event) => {
@@ -29,7 +29,7 @@ export default class NewHistoricalEventForm extends Component {
     let formUpload = new FormData()
     formUpload.append("image", historicalEventImage)
     let historicalEventData = {...this.state}
-    delete historicalEventData["selectedFile"]
+    // delete historicalEventData["selectedFile"]
     historicalEventData = {...historicalEventData, map_id: this.props.mapId}
     formUpload.append("historical_event", JSON.stringify(historicalEventData))
     fetch("http://localhost:3000/api/v1/historical_events", {

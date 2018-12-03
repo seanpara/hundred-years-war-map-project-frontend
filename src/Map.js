@@ -36,6 +36,8 @@ export default class Map extends Component {
 
 
   renderMarkers = () => {
+    console.log("About to render markers")
+    console.log("Map data is ", this.props.mapData)
     return this.props.mapData.historical_events.map((historicalEvent) => {
       return (
         <Marker
@@ -70,6 +72,8 @@ export default class Map extends Component {
   }
 
   render() {
+    // count historical events
+    if (this.props.mapData !== undefined) {console.log(this.props.mapData.historical_events.length) }
     // this.props.mapData === undefined ? console.log("map data isn't here") : console.log(this.props.mapData.historical_events)
     const {viewport} = this.state
     // console.log("View state is",viewState )
