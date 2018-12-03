@@ -60,33 +60,20 @@ class App extends Component {
 
   render() {
     return (
-
       <Router>
         <div className="App">
           <NavBar/>
           <Route
-            exact path="/"
-            render={(props) => <MapContainer {...props}
-              mapData={this.state.mapData[1]}
-              mapDescription={this.state.mapDecriptions[1]}
-              addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
-              /> }
-          />
-          <Route
-            exact path="/1399"
-            render={(props) => <MapContainer {...props}
-              mapData={this.state.mapData[0]}
-              mapDescription={this.state.mapDecriptions[0]}
-              addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
-              /> }
-          />
-          <Route
-            exact path="/1429"
-            render={(props) => <MapContainer {...props}
-              mapData={this.state.mapData[1]}
-              mapDescription={this.state.mapDecriptions[1]}
-              addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
-              /> }
+            path="/:mapYear"
+            render={(props) => {
+              // console.log("Router props are", props.match.params.mapNumber)
+              console.log("Router props are", props)
+              return <MapContainer {...props}
+                mapData={this.state.mapData[props.match.params.mapNumber]}
+                mapDescription={this.state.mapDecriptions[props.match.params.mapNumber]}
+                addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
+                />
+            } }
           />
         </div>
       </Router>
