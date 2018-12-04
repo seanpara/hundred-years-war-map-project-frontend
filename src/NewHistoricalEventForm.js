@@ -9,7 +9,6 @@ export default class NewHistoricalEventForm extends Component {
     year: "",
     latitude: this.props.clickedLatitude,
     longitude: this.props.clickedLongitude
-    // selectedFile: null
   }
 
   handleInputChange = (event) => {
@@ -29,26 +28,23 @@ export default class NewHistoricalEventForm extends Component {
     let formUpload = new FormData()
     formUpload.append("image", historicalEventImage)
     let historicalEventData = {...this.state}
-    // delete historicalEventData["selectedFile"]
     historicalEventData = {...historicalEventData, map_id: this.props.mapId}
-    console.log(historicalEventData)
-    // formUpload.append("historical_event", JSON.stringify(historicalEventData))
-    // fetch("http://localhost:3000/api/v1/historical_events", {
-    //   method: "POST",
-    //   body: formUpload
-    // })
-    // .then(r => r.json())
-    // .then((r) => {
-    //   // console.log(r)
-    //   this.setState({
-    //     title: "",
-    //     description: "",
-    //     year: "",
-    //     latitude: '',
-    //     longitude: '',
-    //     selectedFile: null
-    //   }, this.props.addHistoricalEventToMapDataState(r))
-    // })
+    formUpload.append("historical_event", JSON.stringify(historicalEventData))
+    fetch("http://localhost:3000/api/v1/historical_events", {
+      method: "POST",
+      body: formUpload
+    })
+    .then(r => r.json())
+    .then((historicalEventRes) => {
+      // console.log(r)
+      this.setState({
+        title: "",
+        description: "",
+        year: "",
+        latitude: '',
+        longitude: ''
+      }, this.props.addHistoricalEventToMapDataState(historicalEventRes))
+    })
   }// end of hanldeSubmit
 
   componentDidUpdate(prevProps, prevState, snapshot){

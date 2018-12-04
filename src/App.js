@@ -35,8 +35,8 @@ class App extends Component {
   }
 
   addHistoricalEventToMapDataState = (historicalEventObj) => {
-    console.log("H event is", historicalEventObj)
-    console.log("Old state is", this.state)
+    // console.log("H event is", historicalEventObj)
+    // console.log("Old state is", this.state)
     this.setState((state) => {
       return {
         mapData: state.mapData.map((mapBoxMap) => {
@@ -50,7 +50,7 @@ class App extends Component {
           }
         })
       }
-    }, () => console.log("New state is", this.state))
+    })
   }
 
   componentDidMount(){
