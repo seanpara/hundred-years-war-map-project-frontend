@@ -1,17 +1,14 @@
-import React, {PureComponent} from 'react';
+import React from 'react';
 
-export default class PopUpInfo extends PureComponent {
-
-  render() {
-    console.log(this.props)
-    // debugger
+const PopUpInfo = (props) => {
     return (
       <div>
         <div>
-          {this.props.popupInfo.title} | {this.props.popupInfo.year}
+          {props.popupInfo.title} | {props.popupInfo.year}
         </div>
-        <img className="pop-up-image"src={this.props.popupInfo.image} />
+        <img className="pop-up-image"src={props.popupInfo.image} />
       </div>
     );
-  }
 }
+
+export default PopUpInfo

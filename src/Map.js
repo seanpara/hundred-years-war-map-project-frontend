@@ -87,8 +87,9 @@ export default class Map extends Component {
       return (
           <MapGL
             {...viewport}
+            width="100%"
+            height="800px"
             onViewportChange={this.updateViewport}
-            className="react-mapbox"
             mapStyle={this.props.mapData === undefined ?
               "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData.url}
             onClick={this.onClickMap}

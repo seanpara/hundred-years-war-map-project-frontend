@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 
-class MapDescription extends Component {
+const MapDescription = (props) => {
 
-  render() {
     return (
-      <div>
-      {this.props.mapDescription === undefined ? "This will be a description soon" : this.props.mapDescription.text }
+      <div className="map-description">
+      {props.mapDescription === undefined ? "This will be a description soon" : props.mapDescription.text }
       </div>
     );
-  }
 
 }
 

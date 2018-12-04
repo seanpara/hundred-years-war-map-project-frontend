@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 
-class HistoryEventDescription extends Component {
-
-  render() {
+const HistoryEventDescription = (props) => {
     return (
-      <div>{this.props.text}</div>
-    );
-  }
+        <div className="historical-event-description">
+        {props.text}
+        </div>
+    )
 
 }
 

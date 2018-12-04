@@ -6,6 +6,14 @@ const NavBar = (props) => {
   return (
 
     <div className="navbar">
+      <div className="coat-of-arms">
+          <img src="https://www.fleurdelis.com/images/edwardiii.png"></img>
+      </div>
+      <div className="nav-item">
+        <NavLink to="/">
+          <h1>Home</h1>
+        </NavLink>
+      </div>
       <div className="nav-item">
         <NavLink to="/1429">
             <h1>1429</h1>
@@ -16,11 +24,7 @@ const NavBar = (props) => {
             <h1>1399</h1>
         </NavLink>
       </div>
-      <div className="nav-item">
-        <NavLink to="/">
-          <h1>Home</h1>
-        </NavLink>
-      </div>
+
     </div>
 
   );
