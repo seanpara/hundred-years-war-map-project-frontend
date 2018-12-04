@@ -20,7 +20,7 @@ export default class Map extends Component {
         viewport: {
             latitude: 49.5,
             longitude: -1.25,
-            zoom: 4.7,
+            zoom: 4,
             bearing: 0,
             pitch: 0,
             width: 700,
@@ -88,7 +88,7 @@ export default class Map extends Component {
           <MapGL
             {...viewport}
             width="100%"
-            height="800px"
+            height="500px"
             onViewportChange={this.updateViewport}
             mapStyle={this.props.mapData === undefined ?
               "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData.url}

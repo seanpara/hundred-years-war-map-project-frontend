@@ -1,7 +1,7 @@
 .App {
   background-color: #778899;
   background-size: cover;
-  height: 105vh;
+   height: 100vh;
   width: 100vw;
   overflow: hidden;
   font-family: 'Almendra', serif;
@@ -35,10 +35,10 @@
 .navbar {
   display:flex;
   margin: 0;
-  font-size: 25px;
+  font-size: 20px;
   color: black;
   justify-content: center;
-  margin-left: 50px;
+  /* margin-left: 20px; */
 }
 
 a {
@@ -55,8 +55,8 @@ a {
 .coat-of-arms {
   display: flex;
   width: auto;
-  height: 180px;
-  margin: 20px; 
+  height: 150px;
+  margin: 20px;
 }
 
 .nav-item {
@@ -72,7 +72,7 @@ a {
   border-radius: 25px;
   justify-content: center;
   margin-left: 300px;
-  height: 160px;
+  height: 120px;
 }
 
 .App-logo {
