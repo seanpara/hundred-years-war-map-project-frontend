@@ -11,17 +11,17 @@ const NavBar = (props) => {
       </div>
       <div className="nav-item">
         <NavLink to="/">
-          <h1>Home</h1>
+          <p className="nav-item-text">Home</p>
         </NavLink>
       </div>
       <div className="nav-item">
         <NavLink to="/1429">
-            <h1>1429</h1>
+            <p className="nav-item-text" >1429</p>
         </NavLink>
       </div>
       <div className="nav-item">
         <NavLink to="/1399">
-            <h1>1399</h1>
+            <p className="nav-item-text" >1399</p>
         </NavLink>
       </div>
 
