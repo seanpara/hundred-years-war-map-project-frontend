@@ -7,8 +7,8 @@ export default class NewHistoricalEventForm extends Component {
     title: "",
     description: "",
     year: "",
-    latitude: '',
-    longitude: ''
+    latitude: this.props.clickedLatitude,
+    longitude: this.props.clickedLongitude
     // selectedFile: null
   }
 
@@ -31,27 +31,34 @@ export default class NewHistoricalEventForm extends Component {
     let historicalEventData = {...this.state}
     // delete historicalEventData["selectedFile"]
     historicalEventData = {...historicalEventData, map_id: this.props.mapId}
-    formUpload.append("historical_event", JSON.stringify(historicalEventData))
-    fetch("http://localhost:3000/api/v1/historical_events", {
-      method: "POST",
-      body: formUpload
-    })
-    .then(r => r.json())
-    .then((r) => {
-      // console.log(r)
-      this.setState({
-        title: "",
-        description: "",
-        year: "",
-        latitude: '',
-        longitude: '',
-        selectedFile: null
-      }, this.props.addHistoricalEventToMapDataState(r))
+    console.log(historicalEventData)
+    // formUpload.append("historical_event", JSON.stringify(historicalEventData))
+    // fetch("http://localhost:3000/api/v1/historical_events", {
+    //   method: "POST",
+    //   body: formUpload
+    // })
+    // .then(r => r.json())
+    // .then((r) => {
+    //   // console.log(r)
+    //   this.setState({
+    //     title: "",
+    //     description: "",
+    //     year: "",
+    //     latitude: '',
+    //     longitude: '',
+    //     selectedFile: null
+    //   }, this.props.addHistoricalEventToMapDataState(r))
+    // })
+  }// end of hanldeSubmit
 
-      //call function to change state here
-    })
-    event.target.reset()
+  componentDidUpdate(prevProps, prevState, snapshot){
+    // console.log("prevProps are:", prevProps, "prevState is:", prevState, "snapshot is:", snapshot)
+    if (prevProps.clickedLatitude !== this.props.clickedLatitude && prevProps.clickedLongitude !== this.props.clickedLongitude ){
+      this.setState({latitude: this.props.clickedLatitude, longitude: this.props.clickedLongitude})
+    }
   }
+
+
 
   render() {
     return (

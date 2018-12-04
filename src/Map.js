@@ -36,8 +36,8 @@ export default class Map extends Component {
 
 
   renderMarkers = () => {
-    console.log("About to render markers")
-    console.log("Map data is ", this.props.mapData)
+    // console.log("About to render markers")
+    // console.log("Map data is ", this.props.mapData)
     return this.props.mapData.historical_events.map((historicalEvent) => {
       return (
         <Marker
@@ -71,9 +71,16 @@ export default class Map extends Component {
     );
   }
 
+
+  onClickMap = (event) => {
+      const clickedLatitude = event.lngLat[1]
+      const clickedLongitude = event.lngLat[0]
+      this.props.sendClickedLatLngToForm(clickedLatitude, clickedLongitude)
+      console.log(clickedLatitude, clickedLongitude)
+    }
+
   render() {
     // count historical events
-    if (this.props.mapData !== undefined) {console.log(this.props.mapData.historical_events.length) }
     // this.props.mapData === undefined ? console.log("map data isn't here") : console.log(this.props.mapData.historical_events)
     const {viewport} = this.state
     // console.log("View state is",viewState )
@@ -83,8 +90,8 @@ export default class Map extends Component {
             onViewportChange={this.updateViewport}
             className="react-mapbox"
             mapStyle={this.props.mapData === undefined ?
-              "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData.url
-            }
+              "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData.url}
+            onClick={this.onClickMap}
             mapboxApiAccessToken={TOKEN}
              >
             {this.props.mapData === undefined ? null : this.renderMarkers()}
