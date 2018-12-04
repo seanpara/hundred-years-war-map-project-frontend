@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import Pin from "./Pin.js"
 import PopUpInfo from "./PopUpInfo.js"
 import MapGL, {Marker, Popup, NavigationControl} from 'react-map-gl';
-
+import Fade from 'react-reveal/Fade';
 
 const TOKEN = 'pk.eyJ1Ijoic2Vhbi1wYXJhIiwiYSI6ImNqb29lcG50YzBibjMzcGwxMjZibnd3ZnMifQ.DTE1NiDPv4hV7N8xT3xnZA';
 
@@ -85,6 +85,7 @@ export default class Map extends Component {
     const {viewport} = this.state
     // console.log("View state is",viewState )
       return (
+        <Fade big>
           <MapGL
             {...viewport}
             width="100%"
@@ -102,6 +103,7 @@ export default class Map extends Component {
            </div>
 
           </MapGL>
+          </Fade>
       );
     }
 }// end of map compoent
