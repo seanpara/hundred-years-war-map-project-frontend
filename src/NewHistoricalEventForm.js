@@ -47,12 +47,19 @@ export default class NewHistoricalEventForm extends Component {
     })
   }// end of hanldeSubmit
 
-  componentDidUpdate(prevProps, prevState, snapshot){
-    // console.log("prevProps are:", prevProps, "prevState is:", prevState, "snapshot is:", snapshot)
-    if (prevProps.clickedLatitude !== this.props.clickedLatitude && prevProps.clickedLongitude !== this.props.clickedLongitude ){
-      this.setState({latitude: this.props.clickedLatitude, longitude: this.props.clickedLongitude})
+  static getDerivedStateFromProps(currentProps,currentState) {
+    return {
+      latitude: currentProps.clickedLatitude,
+      longitude: currentProps.clickedLongitude
     }
   }
+
+  // componentDidUpdate(prevProps, prevState, snapshot){
+  //   // console.log("prevProps are:", prevProps, "prevState is:", prevState, "snapshot is:", snapshot)
+  //   if (prevProps.clickedLatitude !== this.props.clickedLatitude && prevProps.clickedLongitude !== this.props.clickedLongitude ){
+  //     this.setState({latitude: this.props.clickedLatitude, longitude: this.props.clickedLongitude})
+  //   }
+  // }
 
 
 
