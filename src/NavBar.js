@@ -3,6 +3,20 @@ import {NavLink} from 'react-router-dom'
 
 const NavBar = (props) => {
 
+  // console.log(props)
+  const renderNavLinks = () => {
+    const mapYears = props.mapData.map(mapBoxMap => mapBoxMap.year)
+    console.log(mapYears)
+
+    // return mapYears.map((year) => {
+    //   return
+    //       <div className="nav-item">
+    //         <NavLink to=`{year}`>
+    //           <p className="nav-item-text">{year}</p>
+    //         </NavLink>
+    //       </div>
+    // })
+  }
   return (
 
     <div className="navbar">

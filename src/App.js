@@ -58,35 +58,49 @@ class App extends Component {
     this.getMapDescriptions()
   }
 
+  mapBasedOnURL = (mapUrl) => {
+    const mapYearNum = parseInt(mapUrl)
+    const chosenMap = this.state.mapData.find((reactMap) => {
+      return reactMap.year === mapYearNum
+    })
+    return chosenMap
+  }
+
+//   mapDescriptionBasedOnURL = (mapUrl) => {
+//     const mapYearNum = parseInt(mapUrl)
+//     const chosenMap = this.state.mapData.find((reactMap) => {
+//       return reactMap.year === mapYearNum
+//     })
+//
+//     if (chosenMap === undefined) {
+//
+//     } else {
+//       console.log(chosenMap.id)
+//     } // const mapId = chosenMap.id
+//
+// }
+
   render() {
+
     return (
 
       <Router>
         <div className="App">
-          <NavBar/>
+          <NavBar mapData={this.state.mapData}/>
           <Route
-            exact path="/"
-            render={(props) => <MapContainer {...props}
-              mapData={this.state.mapData[1]}
-              mapDescription={this.state.mapDecriptions[1]}
-              addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
-              /> }
-          />
-          <Route
-            exact path="/1399"
-            render={(props) => <MapContainer {...props}
-              mapData={this.state.mapData[0]}
-              mapDescription={this.state.mapDecriptions[0]}
-              addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
-              /> }
-          />
-          <Route
-            exact path="/1429"
-            render={(props) => <MapContainer {...props}
-              mapData={this.state.mapData[1]}
-              mapDescription={this.state.mapDecriptions[1]}
-              addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
-              /> }
+            path="/:mapYear"
+            render={(props) => {
+            // this.mapData === undefined ? "description text soon" : this.mapBasedOnURL(props.match.params.mapYear).map_descriptions[0]
+
+              return <MapContainer {...props}
+                mapData={this.mapBasedOnURL(props.match.params.mapYear)}
+                mapDescription={
+                  this.mapBasedOnURL(props.match.params.mapYear) === undefined ? "description text soon" : this.mapBasedOnURL(props.match.params.mapYear).map_descriptions[0].text
+                }
+
+                addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
+                />
+            } }
           />
         </div>
       </Router>
