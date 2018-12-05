@@ -41,7 +41,9 @@ export default class NewHistoricalEventForm extends Component {
         year: "",
         latitude: '',
         longitude: ''
-      }, this.props.addHistoricalEventToMapDataState(historicalEventRes))
+      },
+      this.props.addHistoricalEventToMapDataState(historicalEventRes))
+
     })
   }// end of hanldeSubmit
 
@@ -53,8 +55,9 @@ export default class NewHistoricalEventForm extends Component {
 
   render() {
     return (
-      <div className="historical-event-form">
-        <form onSubmit={this.handleSubmit}>
+      <div className="historical-event-form-container">
+        <form className="historical-event-form"
+        onSubmit={this.handleSubmit}>
           <div className="historical-event-form-item">
             <label>Title
               <input

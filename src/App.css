@@ -1,7 +1,7 @@
 .App {
   background-color: #778899;
   background-size: cover;
-   height: 100vh;
+  height: 100vh;
   width: 100vw;
   overflow: hidden;
   font-family: 'Almendra', serif;
@@ -23,16 +23,25 @@
   margin: 20px;
 }
 
+.mapboxgl-popup-content{
+  background: none;
+  /* border: 2px solid black; */
+}
+
 .historical-event-form {
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
-  flex-wrap: nowrap
+  width: 80%;
+  margin-left: 130px;
 }
 
 .historical-event-form-item{
-  padding:0 15px;
+  padding:0 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
 }
 
 .pop-up-image {
@@ -58,7 +67,7 @@ a {
 .coat-of-arms {
   display: flex;
   /* width: 20px; */
-  height: 50;
+  height: 100px;
   margin-left: 20px;
 
 }
@@ -88,6 +97,12 @@ a {
   justify-content: center;
   margin-left: 200px;
   height: 80px;
+}
+
+.nav-item:hover {
+  /* color: white; */
+  text: rgb(44,93,175);
+  background: rgb(155,46,46,.5);
 }
 
 .nav-item-text {

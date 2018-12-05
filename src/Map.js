@@ -103,7 +103,7 @@ export default class Map extends Component {
            </div>
 
           </MapGL>
-          </Fade>
+      </Fade>
       );
     }
 }// end of map compoent
