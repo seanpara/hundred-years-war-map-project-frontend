@@ -26,7 +26,8 @@
 .historical-event-form {
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  flex-direction: row;
+  width: 70%;
 }
 
 .pop-up-image {

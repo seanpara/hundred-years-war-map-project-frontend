@@ -8,15 +8,16 @@ const NavBar = (props) => {
     const mapYears = props.mapData.map(mapBoxMap => mapBoxMap.year)
     console.log(mapYears)
 
-    // return mapYears.map((year) => {
-    //   return
-    //       <div className="nav-item">
-    //         <NavLink to=`{year}`>
-    //           <p className="nav-item-text">{year}</p>
-    //         </NavLink>
-    //       </div>
-    // })
-  }
+    return mapYears.map((year) => {
+      return (
+          <div key={year} className="nav-item">
+            <NavLink to={`${year}`}>
+              <p className="nav-item-text">{year}</p>
+            </NavLink>
+          </div>
+        )
+      })
+    }
   return (
 
     <div className="navbar">
@@ -28,16 +29,7 @@ const NavBar = (props) => {
           <p className="nav-item-text">Home</p>
         </NavLink>
       </div>
-      <div className="nav-item">
-        <NavLink to="/1429">
-            <p className="nav-item-text" >1429</p>
-        </NavLink>
-      </div>
-      <div className="nav-item">
-        <NavLink to="/1399">
-            <p className="nav-item-text" >1399</p>
-        </NavLink>
-      </div>
+      {renderNavLinks()}
 
     </div>
 
