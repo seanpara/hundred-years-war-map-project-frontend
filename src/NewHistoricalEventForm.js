@@ -16,7 +16,6 @@ export default class NewHistoricalEventForm extends Component {
     const value = target.value;
     const name = target.name;
 
-    // console.log(this)
     this.setState({
       [name]: value
     })
@@ -36,7 +35,6 @@ export default class NewHistoricalEventForm extends Component {
     })
     .then(r => r.json())
     .then((historicalEventRes) => {
-      // console.log(r)
       this.setState({
         title: "",
         description: "",
@@ -47,74 +45,76 @@ export default class NewHistoricalEventForm extends Component {
     })
   }// end of hanldeSubmit
 
-  static getDerivedStateFromProps(currentProps,currentState) {
-    return {
-      latitude: currentProps.clickedLatitude,
-      longitude: currentProps.clickedLongitude
+  componentDidUpdate(prevProps, prevState){
+    if (prevProps.clickedLatitude !== this.props.clickedLatitude && prevProps.clickedLongitude !== this.props.clickedLongitude ){
+      this.setState({latitude: this.props.clickedLatitude, longitude: this.props.clickedLongitude})
     }
   }
-
-  // componentDidUpdate(prevProps, prevState, snapshot){
-  //   // console.log("prevProps are:", prevProps, "prevState is:", prevState, "snapshot is:", snapshot)
-  //   if (prevProps.clickedLatitude !== this.props.clickedLatitude && prevProps.clickedLongitude !== this.props.clickedLongitude ){
-  //     this.setState({latitude: this.props.clickedLatitude, longitude: this.props.clickedLongitude})
-  //   }
-  // }
-
-
 
   render() {
     return (
       <div className="historical-event-form">
         <form onSubmit={this.handleSubmit}>
-          <label>Title
-            <input
-              name="title"
-              type="text"
-              value={this.state.title}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <label>Description
-            <input
-              name="description"
-              type="text"
-              value={this.state.description}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <label>Year
-            <input
-              name="year"
-              type="number"
-              value={this.state.year}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <label>Latitude
-            <input
-              name="latitude"
-              type="number"
-              step="0.0001"
-              value={this.state.latitude}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <label>Longitude
-            <input
-              name="longitude"
-              type="number"
-              step="0.0001"
-              value={this.state.longitude}
-              onChange={this.handleInputChange}
-            />
-          </label>
-          <label>Image File
-            <input
-              type="file"
-              id="file-input"
-            />
-          </label>
+          <div className="historical-event-form-item">
+            <label>Title
+              <input
+                name="title"
+                type="text"
+                value={this.state.title}
+                onChange={this.handleInputChange}
+              />
+            </label>
+          </div>
+          <div className="historical-event-form-item">
+            <label>Description
+              <input
+                name="description"
+                type="text"
+                value={this.state.description}
+                onChange={this.handleInputChange}
+              />
+            </label>
+          </div>
+          <div className="historical-event-form-item">
+            <label>Year
+              <input
+                name="year"
+                type="number"
+                value={this.state.year}
+                onChange={this.handleInputChange}
+              />
+            </label>
+          </div>
+          <div className="historical-event-form-item">
+            <label>Latitude
+              <input
+                name="latitude"
+                type="number"
+                step="0.0001"
+                value={this.state.latitude}
+                onChange={this.handleInputChange}
+              />
+            </label>
+          </div>
+          <div className="historical-event-form-item">
+            <label>Longitude
+              <input
+                name="longitude"
+                type="number"
+                step="0.0001"
+                value={this.state.longitude}
+                onChange={this.handleInputChange}
+              />
+            </label>
+          </div>
+          <div className="historical-event-form-item">
+            <label>Image File
+              <input
+                type="file"
+                id="file-input"
+              />
+            </label>
+          </div>
           <input type="submit" value="Submit" />
         </form>
       </div>
