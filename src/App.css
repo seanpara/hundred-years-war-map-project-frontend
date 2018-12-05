@@ -66,10 +66,10 @@ a {
 
 .coat-of-arms {
   display: flex;
-  /* width: 20px; */
+  width: auto;
   height: 100px;
   margin-left: 20px;
-
+  margin-top: 15px;
 }
 
 .navbar {
