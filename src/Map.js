@@ -34,6 +34,14 @@ export default class Map extends Component {
     this.setState({viewport});
   }
 
+  componentDidUpdate(prevProps, prevState){
+    console.log("map previous props map year type is:", prevProps.mapData.year," prevState popupInfo is:", prevState.popupInfo)
+
+    if (prevProps.mapData.year !== this.props.mapData.year){
+      this.setState({popupInfo: null})
+      this.props.removeEventDescription()
+    }
+  }
 
   renderMarkers = () => {
     // console.log("About to render markers")
@@ -70,7 +78,6 @@ export default class Map extends Component {
       </Popup>
     );
   }
-
 
   onClickMap = (event) => {
       const clickedLatitude = event.lngLat[1]

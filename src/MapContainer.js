@@ -29,12 +29,12 @@ class MapContainer extends Component {
     // console.log(this.props)
     return (
       <div className="map-container">
-        <Map
+      { this.props.mapData === undefined ? null:  <Map
           renderEventDescription={this.renderEventDescription}
           removeEventDescription={this.removeEventDescription}
           mapData={this.props.mapData}
           sendClickedLatLngToForm={this.sendClickedLatLngToForm}
-        />
+        />}
         {this.state.showEventDescription ? <HistoryEventDescription text={this.state.historyEventDescriptionText}/> : null}
         <MapDescription mapDescription={this.props.mapDescription}/>
         {this.props.mapData === undefined ? null :<NewHistoricalEventForm

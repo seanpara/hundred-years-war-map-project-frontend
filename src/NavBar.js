@@ -6,7 +6,6 @@ const NavBar = (props) => {
   // console.log(props)
   const renderNavLinks = () => {
     const mapYears = props.mapData.map(mapBoxMap => mapBoxMap.year)
-    console.log(mapYears)
 
     return mapYears.map((year) => {
       return (
