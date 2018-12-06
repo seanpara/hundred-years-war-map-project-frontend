@@ -54,7 +54,7 @@
 
 .form-input {
   margin-left: 10px;
-  border: 2px solid red;
+  border: 2px solid blue;
   border-radius: 4px;
 }
 
@@ -87,9 +87,10 @@ a {
 .coat-of-arms {
   display: flex;
   width: auto;
-  height: 100px;
+  height: 120px;
   margin-left: 20px;
-  margin-top: 15px;
+  margin-top: 10px;
+  margin-bottom: 5px; 
 }
 
 .navbar {

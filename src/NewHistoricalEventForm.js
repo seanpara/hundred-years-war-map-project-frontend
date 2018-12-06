@@ -29,6 +29,7 @@ export default class NewHistoricalEventForm extends Component {
     let historicalEventData = {...this.state}
     historicalEventData = {...historicalEventData, map_id: this.props.mapId}
     formUpload.append("historical_event", JSON.stringify(historicalEventData))
+    event.target.reset()
     fetch("http://localhost:3000/api/v1/historical_events", {
       method: "POST",
       body: formUpload
