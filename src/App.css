@@ -54,12 +54,16 @@
 
 .form-input {
   margin-left: 10px;
-  border: 2px solid blue;
+  border: 1px solid blue;
+  background-color: rgb(155,46,46,.5);
   border-radius: 4px;
 }
 
 .submit-button {
   margin-right: 15px;
+   border: none;
+   text-decoration: none;
+   border-radius: 10px;
 }
 
 .pop-up-image {
