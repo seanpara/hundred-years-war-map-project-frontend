@@ -20,11 +20,15 @@
 .map-description {
   display: flex;
   justify-content: center;
+  /* margin: 20px; */
+  width: 80%;
   margin: 20px;
+  margin-left: 10%;
 }
 
 .mapboxgl-popup-content{
   background: none;
+
   /* border: 2px solid black; */
 }
 
@@ -34,14 +38,28 @@
   flex-direction: row;
   align-items: center;
   width: 80%;
-  margin-left: 130px;
+  margin-left: 10%;
 }
 
-.historical-event-form-item{
+.historical-event-form-item {
   padding:0 5px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
+}
+
+.form-label {
+
+}
+
+.form-input {
+  margin-left: 10px;
+  border: 2px solid red;
+  border-radius: 4px;
+}
+
+.submit-button {
+  margin-right: 15px;
 }
 
 .pop-up-image {
@@ -62,6 +80,8 @@ a {
   display: flex;
   justify-content: center;
   margin: 20px;
+  width: 80%;
+  margin-left: 10%;
 }
 
 .coat-of-arms {
@@ -74,7 +94,7 @@ a {
 
 .navbar {
   display:flex;
-  margin: 0;
+  margin: 10px;
   font-size: 20px;
   color: black;
   justify-content: center;

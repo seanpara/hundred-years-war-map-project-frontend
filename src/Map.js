@@ -35,7 +35,7 @@ export default class Map extends Component {
   }
 
   componentDidUpdate(prevProps, prevState){
-    console.log("map previous props map year type is:", prevProps.mapData.year," prevState popupInfo is:", prevState.popupInfo)
+    // console.log("map previous props map year type is:", prevProps.mapData.year," prevState popupInfo is:", prevState.popupInfo)
 
     if (prevProps.mapData.year !== this.props.mapData.year){
       this.setState({popupInfo: null})

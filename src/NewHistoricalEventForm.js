@@ -59,8 +59,9 @@ export default class NewHistoricalEventForm extends Component {
         <form className="historical-event-form"
         onSubmit={this.handleSubmit}>
           <div className="historical-event-form-item">
-            <label>Title
+            <label className="form-label">Title
               <input
+                className="form-input"
                 name="title"
                 type="text"
                 value={this.state.title}
@@ -69,8 +70,9 @@ export default class NewHistoricalEventForm extends Component {
             </label>
           </div>
           <div className="historical-event-form-item">
-            <label>Description
+            <label className="form-label">Description
               <input
+                className="form-input"
                 name="description"
                 type="text"
                 value={this.state.description}
@@ -79,8 +81,9 @@ export default class NewHistoricalEventForm extends Component {
             </label>
           </div>
           <div className="historical-event-form-item">
-            <label>Year
+            <label className="form-label">Year
               <input
+                className="form-input"
                 name="year"
                 type="number"
                 value={this.state.year}
@@ -89,8 +92,9 @@ export default class NewHistoricalEventForm extends Component {
             </label>
           </div>
           <div className="historical-event-form-item">
-            <label>Latitude
+            <label className="form-label">Latitude
               <input
+                className="form-input"
                 name="latitude"
                 type="number"
                 step="0.0001"
@@ -100,8 +104,9 @@ export default class NewHistoricalEventForm extends Component {
             </label>
           </div>
           <div className="historical-event-form-item">
-            <label>Longitude
+            <label className="form-label">Longitude
               <input
+                className="form-input"
                 name="longitude"
                 type="number"
                 step="0.0001"
@@ -111,14 +116,19 @@ export default class NewHistoricalEventForm extends Component {
             </label>
           </div>
           <div className="historical-event-form-item">
-            <label>Image File
+            <label className="form-label">Image File
               <input
+                className="form-input"
                 type="file"
                 id="file-input"
               />
             </label>
           </div>
-          <input type="submit" value="Submit" />
+          <input
+            className="submit-button"
+            type="submit"
+            value="Submit"
+          />
         </form>
       </div>
     );
