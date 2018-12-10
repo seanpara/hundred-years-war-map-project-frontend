@@ -45,6 +45,7 @@ class App extends Component {
   }
 
   mapBasedOnURL = (mapUrl) => {
+    // console.log(mapUrl)
     const mapYearNum = parseInt(mapUrl)
     const chosenMap = this.state.mapData.find((reactMap) => {
       return reactMap.year === mapYearNum
@@ -53,9 +54,8 @@ class App extends Component {
   }
 
   render() {
-
+    // console.log(this.state.mapData)
     return (
-
       <Router>
         <div className="App">
           <NavBar mapData={this.state.mapData}/>
@@ -65,10 +65,9 @@ class App extends Component {
               return <MapContainer {...props}
                 mapData={this.mapBasedOnURL(1429)}
                 mapDescription={
-                  this.mapBasedOnURL(1429) === undefined ? "description text soon" : this.mapBasedOnURL(1429).map_descriptions[0].text}
-                addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
-                />
-            } }
+                  this.state.mapData.length === 0 ? "description text soon" : this.mapBasedOnURL(1429).map_descriptions[0].text}
+                addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}/>
+            }}
           />
           <Route
             path="/:mapYear"
@@ -77,8 +76,7 @@ class App extends Component {
                 mapData={this.mapBasedOnURL(props.match.params.mapYear)}
                 mapDescription={
                   this.mapBasedOnURL(props.match.params.mapYear) === undefined ? "description text soon" : this.mapBasedOnURL(props.match.params.mapYear).map_descriptions[0].text}
-                addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}
-                />
+                addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}/>
             }}
           />
         </div>
