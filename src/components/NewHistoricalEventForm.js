@@ -44,7 +44,7 @@ export default class NewHistoricalEventForm extends Component {
         longitude: ''
       },
       this.props.addHistoricalEventToMapDataState(historicalEventRes))
-
+      // this is where the ADD_EVENT_TO_MAP action should be dispatched 
     })
   }// end of hanldeSubmit
 

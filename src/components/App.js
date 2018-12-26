@@ -17,7 +17,7 @@ class App extends Component {
     .then(r => r.json())
     .then( (mapRes) => {
       this.setState((state) => {
-        return {mapData: mapRes}
+        return {mapData: mapRes} // would make this a dispatch with the action of ADD_MAP_DATA
       })
     })
   }
@@ -27,6 +27,7 @@ class App extends Component {
   }
 
   addHistoricalEventToMapDataState = (historicalEventObj) => {
+    // would make this a dispatch of ADD_EVENT_TO_MAP
     this.setState((state) => {
       return {
         mapData: state.mapData.map((mapBoxMap) => {
@@ -54,6 +55,8 @@ class App extends Component {
 
   render() {
     // console.log(this.state.mapData)
+    //  routes will need to be revised when redux is added
+
     return (
       <Router>
         <div className="App">
