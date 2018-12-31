@@ -26,7 +26,6 @@ class MapContainer extends Component {
   }
 
   render() {
-    console.log("MapContainer props are:",this.props)
     return (
       <div className="map-container">
         { this.props.mapData === undefined ? null:  <Map

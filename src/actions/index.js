@@ -1,8 +1,11 @@
-const addMapDataToState = (mapData) => {
-  return {
-    type: "ADD_MAP_DATA",
-    payload: mapData
-  }
+import axios from 'axios'
+
+export const addMapDataToState = () => async dispatch => {
+
+  const response = await axios.get("http://localhost:3000/api/v1/maps")
+  console.log(response)
+
+  // dispatch({type: "ADD_MAP_DATA", payload: response.data})
 }
 
 const addHistoricalEventToMap = (historicalEventObj) => {
@@ -18,31 +21,3 @@ const selectMap = (mapObj) => {
     payload: mapObj
   }
 }
-// const createPolicy = (name, amount) => {
-//   return {
-//     type: "CREATE_POLICY",
-//     payload: {
-//       name: name,
-//       amount: amount
-//     }
-//   }
-// }
-//
-// const deletePolicy = (name) => {
-//   return {
-//     type: "DELETE_POLICY",
-//     payload: {
-//       name: name
-//     }
-//   }
-// }
-//
-// const createClaim = (name, amountOfMoneyToCollect) => {
-//   return {
-//     type: "CREATE_CLAIM",
-//     payload: {
-//       name: name,
-//       amountOfMoneyToCollect: amountOfMoneyToCollect
-//     }
-//   }
-// }

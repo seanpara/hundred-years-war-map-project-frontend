@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { addMapDataToState } from "../actions"
+
 import './App.css';
 import Map from "./Map.js"
 import MapDescription from "./MapDescription.js"
 import MapContainer from "./MapContainer"
 import NavBar from "./NavBar"
 import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 
 class App extends Component {
 
@@ -13,6 +17,7 @@ class App extends Component {
   }
 
   getMapData = () => {
+
     fetch("http://localhost:3000/api/v1/maps")
     .then(r => r.json())
     .then( (mapRes) => {
@@ -23,6 +28,7 @@ class App extends Component {
   }
 
   componentDidMount(){
+    this.props.addMapDataToState()
     this.getMapData()
   }
 
@@ -87,4 +93,12 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  console.log("redux store state is:",state)
+  return {
+    mapData: state.mapData,
+    selectedMap: state.selectedMap
+  }
+}
+
+export default connect(mapStateToProps, {addMapDataToState})(App)
