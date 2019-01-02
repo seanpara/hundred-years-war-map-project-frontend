@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { addMapDataToState } from "../actions"
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
+import { addMapDataToState, selectMap } from "../actions"
 import './App.css';
 import Map from "./Map.js"
 import MapDescription from "./MapDescription.js"
 import MapContainer from "./MapContainer"
 import NavBar from "./NavBar"
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-
 
 class App extends Component {
 
@@ -29,8 +28,13 @@ class App extends Component {
 
   componentDidMount(){
     this.props.addMapDataToState()
+    // console.log(this.props.mapData)
     this.getMapData()
   }
+
+  // componentDidUpdate(prevProps, prevState){
+  //   console.log(prevProps.selectedMap, prevState, this.props.selectedMap)
+  // }
 
   addHistoricalEventToMapDataState = (historicalEventObj) => {
     // would make this a dispatch of ADD_EVENT_TO_MAP
@@ -101,4 +105,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, {addMapDataToState})(App)
+export default connect(mapStateToProps, {addMapDataToState, selectMap})(App)

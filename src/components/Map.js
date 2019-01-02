@@ -3,6 +3,7 @@ import Pin from "./Pin.js"
 import PopUpInfo from "./PopUpInfo.js"
 import MapGL, {Marker, Popup, NavigationControl} from 'react-map-gl';
 import Fade from 'react-reveal/Fade';
+import { connect } from 'react-redux'
 
 const TOKEN = 'pk.eyJ1Ijoic2Vhbi1wYXJhIiwiYSI6ImNqb29lcG50YzBibjMzcGwxMjZibnd3ZnMifQ.DTE1NiDPv4hV7N8xT3xnZA';
 
@@ -13,7 +14,7 @@ const navStyle = {
   padding: '10px'
 };
 
-export default class Map extends Component {
+class Map extends Component {
   constructor(props) {
       super(props);
       this.state = {
@@ -41,6 +42,7 @@ export default class Map extends Component {
       this.setState({popupInfo: null})
       this.props.removeEventDescription()
     }
+    // console.log("redux store selcted map is:",this.props.selectedMap);
   }
 
   renderMarkers = () => {
@@ -90,6 +92,11 @@ export default class Map extends Component {
     // count historical events
     // this.props.mapData === undefined ? console.log("map data isn't here") : console.log(this.props.mapData.historical_events)
     const {viewport} = this.state
+    const {selectedMap} = this.props
+
+    if (!selectedMap){
+      return null
+    }
     // console.log("View state is",viewState )
       return (
         <Fade big>
@@ -98,8 +105,7 @@ export default class Map extends Component {
             width="100%"
             height="500px"
             onViewportChange={this.updateViewport}
-            mapStyle={this.props.mapData === undefined ?
-              "mapbox://styles/sean-para/cjooeq11s245t2spc490zj65f" : this.props.mapData.url}
+            mapStyle={selectedMap.url}
             onClick={this.onClickMap}
             mapboxApiAccessToken={TOKEN}
              >
@@ -114,3 +120,13 @@ export default class Map extends Component {
       );
     }
 }// end of map compoent
+
+const mapStateToProps = (state) => {
+  // console.log("redux store state is:",state)
+  return {
+    mapArray: state.mapData,
+    selectedMap: state.selectedMap
+  }
+}
+
+export default connect(mapStateToProps)(Map)
