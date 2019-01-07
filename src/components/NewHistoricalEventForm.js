@@ -44,7 +44,8 @@ class NewHistoricalEventForm extends Component {
         latitude: '',
         longitude: ''
       },
-      this.props.addHistoricalEventToMapDataState(historicalEventRes))
+      //this.props.addHistoricalEventToMapDataState(historicalEventRes)
+    )
       this.props.addHistoricalEventToMap(historicalEventRes)
       // this is where the ADD_EVENT_TO_MAP action should be dispatched
     })

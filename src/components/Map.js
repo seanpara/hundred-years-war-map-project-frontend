@@ -46,16 +46,16 @@ class Map extends Component {
   }
 
   renderMarkers = () => {
-    // console.log("About to render markers")
-    // console.log("Map data is ", this.props.mapData)
-    return this.props.mapData.historical_events.map((historicalEvent) => {
-      return (
-        <Marker
-          key={historicalEvent.id}
-          latitude={historicalEvent.latitude}
-          longitude={historicalEvent.longitude}
+    const {selectedMap} = this.props
+
+    return selectedMap.historical_events.map((historicalEvent) => {
+        return (
+          <Marker
+            key={historicalEvent.id}
+            latitude={historicalEvent.latitude}
+            longitude={historicalEvent.longitude}
           >
-          <Pin handlePinClick={() => this.handlePinClick(historicalEvent)}/>
+            <Pin handlePinClick={() => this.handlePinClick(historicalEvent)}/>
         </Marker>
       )
     })
@@ -94,7 +94,7 @@ class Map extends Component {
     const {viewport} = this.state
     const {selectedMap} = this.props
 
-    if (!selectedMap){
+    if (!selectedMap || !selectedMap.historical_events ){
       return null
     }
     // console.log("View state is",viewState )
@@ -123,7 +123,6 @@ class Map extends Component {
 const mapStateToProps = (state) => {
   // console.log("redux store state is:",state)
   return {
-    mapArray: state.mapData,
     selectedMap: state.selectedMap
   }
 }

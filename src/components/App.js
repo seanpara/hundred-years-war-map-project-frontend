@@ -66,6 +66,9 @@ class App extends Component {
   render() {
     // console.log(this.state.mapData)
     //  routes will need to be revised when redux is added
+    if (this.state.mapData.length === 0) {
+      return null
+    }
 
     return (
       <Router>
@@ -76,8 +79,7 @@ class App extends Component {
             render={(props) => {
               return <MapContainer {...props}
                 mapData={this.mapBasedOnURL(1429)}
-                mapDescription={
-                  this.state.mapData.length === 0 ? "description text soon" : this.mapBasedOnURL(1429).map_descriptions[0].text}
+                mapDescription={this.mapBasedOnURL(1429).map_descriptions[0].text}
                 addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}/>
             }}
           />
@@ -86,8 +88,7 @@ class App extends Component {
             render={(props) => {
               return <MapContainer {...props}
                 mapData={this.mapBasedOnURL(props.match.params.mapYear)}
-                mapDescription={
-                  this.mapBasedOnURL(props.match.params.mapYear) === undefined ? "description text soon" : this.mapBasedOnURL(props.match.params.mapYear).map_descriptions[0].text}
+                mapDescription={this.mapBasedOnURL(props.match.params.mapYear).map_descriptions[0].text}
                 addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}/>
             }}
           />
