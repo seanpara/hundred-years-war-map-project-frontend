@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { addHistoricalEventToMap } from "../actions"
 
-
-export default class NewHistoricalEventForm extends Component {
+class NewHistoricalEventForm extends Component {
 
   state = {
     title: "",
@@ -44,7 +45,8 @@ export default class NewHistoricalEventForm extends Component {
         longitude: ''
       },
       this.props.addHistoricalEventToMapDataState(historicalEventRes))
-      // this is where the ADD_EVENT_TO_MAP action should be dispatched 
+      this.props.addHistoricalEventToMap(historicalEventRes)
+      // this is where the ADD_EVENT_TO_MAP action should be dispatched
     })
   }// end of hanldeSubmit
 
@@ -135,4 +137,12 @@ export default class NewHistoricalEventForm extends Component {
     );
   }
 
+}// end of event form component
+
+const mapStateToProps = (state) => {
+  return {
+    mapData: state.mapData
+  }
 }
+
+export default connect(mapStateToProps, { addHistoricalEventToMap })(NewHistoricalEventForm)

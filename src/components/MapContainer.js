@@ -26,22 +26,26 @@ class MapContainer extends Component {
   }
 
   render() {
+
+    if (!this.props.mapData) {
+      return null
+    }
     return (
       <div className="map-container">
-        { this.props.mapData === undefined ? null:  <Map
+         <Map
             renderEventDescription={this.renderEventDescription}
             removeEventDescription={this.removeEventDescription}
             mapData={this.props.mapData}
             sendClickedLatLngToForm={this.sendClickedLatLngToForm}
-          />}
+          />
           {this.state.showEventDescription ? <HistoryEventDescription text={this.state.historyEventDescriptionText}/> : null}
           <MapDescription mapDescription={this.props.mapDescription}/>
-          {this.props.mapData === undefined ? null :<NewHistoricalEventForm
+          <NewHistoricalEventForm
             addHistoricalEventToMapDataState={this.props.addHistoricalEventToMapDataState}
             mapId = {this.props.mapData.id}
             clickedLatitude = {this.state.clickedLatitude}
             clickedLongitude = {this.state.clickedLongitude}
-          />}
+          />
       </div>
     );
   }

@@ -109,12 +109,11 @@ class Map extends Component {
             onClick={this.onClickMap}
             mapboxApiAccessToken={TOKEN}
              >
-            {this.props.mapData === undefined ? null : this.renderMarkers()}
+            {this.renderMarkers()}
             {this.renderPopup()}
             <div className="nav" style={navStyle}>
-             <NavigationControl onViewportChange={this.updateViewport} />
-           </div>
-
+              <NavigationControl onViewportChange={this.updateViewport} />
+            </div>
           </MapGL>
       </Fade>
       );

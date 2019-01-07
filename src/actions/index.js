@@ -10,7 +10,7 @@ export const addMapDataToState = () => async dispatch => {
 }
 
 export const addHistoricalEventToMap = (historicalEventObj) => {
-  // console.log(historicalEventObj)
+  console.log(historicalEventObj)
   return {
     type: "ADD_HISTORICAL_EVENT_TO_MAP",
     payload: historicalEventObj
