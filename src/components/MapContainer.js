@@ -26,10 +26,6 @@ class MapContainer extends Component {
   }
 
   render() {
-
-    if (!this.props.mapData) {
-      return null
-    }
     return (
       <div className="map-container">
          <Map
@@ -41,8 +37,6 @@ class MapContainer extends Component {
           {this.state.showEventDescription ? <HistoryEventDescription text={this.state.historyEventDescriptionText}/> : null}
           <MapDescription mapDescription={this.props.mapDescription}/>
           <NewHistoricalEventForm
-            addHistoricalEventToMapDataState={this.props.addHistoricalEventToMapDataState}
-            mapId = {this.props.mapData.id}
             clickedLatitude = {this.state.clickedLatitude}
             clickedLongitude = {this.state.clickedLongitude}
           />

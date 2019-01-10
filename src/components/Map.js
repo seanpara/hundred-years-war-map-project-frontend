@@ -15,34 +15,28 @@ const navStyle = {
 };
 
 class Map extends Component {
-  constructor(props) {
-      super(props);
-      this.state = {
-        viewport: {
-            latitude: 49.5,
-            longitude: -1.25,
-            zoom: 4,
-            bearing: 0,
-            pitch: 0,
-            width: 700,
-            height: 900
-        },
-        popupInfo: null
-      };
-    }// end of constructor
+  state = {
+    viewport: {
+        latitude: 49.5,
+        longitude: -1.25,
+        zoom: 4,
+        bearing: 0,
+        pitch: 0,
+        width: 700,
+        height: 900
+    },
+      popupInfo: null
+  }// end of state construction
 
   updateViewport = (viewport) => {
     this.setState({viewport});
   }
 
   componentDidUpdate(prevProps, prevState){
-    // console.log("map previous props map year type is:", prevProps.mapData.year," prevState popupInfo is:", prevState.popupInfo)
-
     if (prevProps.mapData.year !== this.props.mapData.year){
       this.setState({popupInfo: null})
       this.props.removeEventDescription()
     }
-    // console.log("redux store selcted map is:",this.props.selectedMap);
   }
 
   renderMarkers = () => {
@@ -56,20 +50,19 @@ class Map extends Component {
             longitude={historicalEvent.longitude}
           >
             <Pin handlePinClick={() => this.handlePinClick(historicalEvent)}/>
-        </Marker>
+          </Marker>
       )
     })
   }
 
   handlePinClick = (historicalEvent) => {
-    // console.log(historicalEvent)
     this.setState({popupInfo: historicalEvent },() => this.props.renderEventDescription(historicalEvent.description))
 
   }
 
   renderPopup = () => {
     const {popupInfo} = this.state;
-    // console.log(popupInfo);
+
     return popupInfo && (
       <Popup tipSize={3}
         anchor="top"
@@ -89,39 +82,35 @@ class Map extends Component {
     }
 
   render() {
-    // count historical events
-    // this.props.mapData === undefined ? console.log("map data isn't here") : console.log(this.props.mapData.historical_events)
     const {viewport} = this.state
     const {selectedMap} = this.props
 
     if (!selectedMap || !selectedMap.historical_events ){
       return null
     }
-    // console.log("View state is",viewState )
-      return (
-        <Fade big>
-          <MapGL
-            {...viewport}
-            width="100%"
-            height="500px"
-            onViewportChange={this.updateViewport}
-            mapStyle={selectedMap.url}
-            onClick={this.onClickMap}
-            mapboxApiAccessToken={TOKEN}
-             >
-            {this.renderMarkers()}
-            {this.renderPopup()}
-            <div className="nav" style={navStyle}>
-              <NavigationControl onViewportChange={this.updateViewport} />
-            </div>
-          </MapGL>
+    return (
+      <Fade big>
+        <MapGL
+          {...viewport}
+          width="100%"
+          height="500px"
+          onViewportChange={this.updateViewport}
+          mapStyle={selectedMap.url}
+          onClick={this.onClickMap}
+          mapboxApiAccessToken={TOKEN}
+           >
+          {this.renderMarkers()}
+          {this.renderPopup()}
+          <div className="nav" style={navStyle}>
+            <NavigationControl onViewportChange={this.updateViewport} />
+          </div>
+        </MapGL>
       </Fade>
-      );
-    }
+    )// end of render return
+  }// end of Map render
 }// end of map compoent
 
 const mapStateToProps = (state) => {
-  // console.log("redux store state is:",state)
   return {
     selectedMap: state.selectedMap
   }

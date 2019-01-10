@@ -61,6 +61,7 @@ class App extends Component {
       return reactMap.year === mapYearNum
     })
     return chosenMap
+    // in Redux: same process, but find map in redux store instead of component state, and call selectMap action with it
   }
 
   render() {
@@ -79,8 +80,7 @@ class App extends Component {
             render={(props) => {
               return <MapContainer {...props}
                 mapData={this.mapBasedOnURL(1429)}
-                mapDescription={this.mapBasedOnURL(1429).map_descriptions[0].text}
-                addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}/>
+                />
             }}
           />
           <Route
@@ -88,8 +88,7 @@ class App extends Component {
             render={(props) => {
               return <MapContainer {...props}
                 mapData={this.mapBasedOnURL(props.match.params.mapYear)}
-                mapDescription={this.mapBasedOnURL(props.match.params.mapYear).map_descriptions[0].text}
-                addHistoricalEventToMapDataState={this.addHistoricalEventToMapDataState}/>
+                />
             }}
           />
         </div>
@@ -99,7 +98,6 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log("redux store state is:",state)
   return {
     mapData: state.mapData,
     selectedMap: state.selectedMap

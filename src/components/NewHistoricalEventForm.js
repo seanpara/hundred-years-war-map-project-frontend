@@ -28,7 +28,7 @@ class NewHistoricalEventForm extends Component {
     let formUpload = new FormData()
     formUpload.append("image", historicalEventImage)
     let historicalEventData = {...this.state}
-    historicalEventData = {...historicalEventData, map_id: this.props.mapId}
+    historicalEventData = {...historicalEventData, map_id: this.props.selectedMap.id}
     formUpload.append("historical_event", JSON.stringify(historicalEventData))
     event.target.reset()
     fetch("http://localhost:3000/api/v1/historical_events", {
@@ -142,7 +142,7 @@ class NewHistoricalEventForm extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    mapData: state.mapData
+    selectedMap: state.selectedMap
   }
 }
 

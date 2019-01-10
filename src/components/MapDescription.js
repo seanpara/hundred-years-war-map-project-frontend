@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+
 
 const MapDescription = (props) => {
-    // console.log(props);
-    return (
-      <div className="map-description">
-      {props.mapDescription === undefined ? "This will be a description soon" : props.mapDescription }
-      </div>
-    );
-
+    if (!props.description){
+      return null
+    }
+    else {
+      return (
+        <div className="map-description">
+        { props.description[0].text }
+        </div>
+      );
+    }
 }
 
-export default MapDescription;
+const mapStateToProps = (state) => {
+  return {
+    description: state.selectedMap.map_descriptions
+  }
+}
+
+export default connect(mapStateToProps)(MapDescription)
 
 
 //
