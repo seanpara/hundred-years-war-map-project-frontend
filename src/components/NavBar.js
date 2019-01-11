@@ -36,7 +36,7 @@ const NavBar = (props) => {
           <img className="coat-of-arms" src="https://www.fleurdelis.com/images/edwardiii.png"></img>
       </div>
       <div className="nav-item">
-        <NavLink to="/">
+        <NavLink to="/" onClick={() => changeMap(1429)}>
           <p className="nav-item-text">Home</p>
         </NavLink>
       </div>

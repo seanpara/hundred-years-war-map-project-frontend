@@ -31,7 +31,6 @@ class MapContainer extends Component {
          <Map
             renderEventDescription={this.renderEventDescription}
             removeEventDescription={this.removeEventDescription}
-            mapData={this.props.mapData}
             sendClickedLatLngToForm={this.sendClickedLatLngToForm}
           />
           {this.state.showEventDescription ? <HistoryEventDescription text={this.state.historyEventDescriptionText}/> : null}

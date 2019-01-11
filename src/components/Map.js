@@ -31,9 +31,9 @@ class Map extends Component {
   updateViewport = (viewport) => {
     this.setState({viewport});
   }
-
+  //
   componentDidUpdate(prevProps, prevState){
-    if (prevProps.mapData.year !== this.props.mapData.year){
+    if (prevProps.selectedMap.year !== this.props.selectedMap.year){
       this.setState({popupInfo: null})
       this.props.removeEventDescription()
     }
@@ -84,7 +84,7 @@ class Map extends Component {
   render() {
     const {viewport} = this.state
     const {selectedMap} = this.props
-
+    console.log("map selected map is:", selectedMap);
     if (!selectedMap || !selectedMap.historical_events ){
       return null
     }
