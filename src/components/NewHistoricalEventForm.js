@@ -31,24 +31,28 @@ class NewHistoricalEventForm extends Component {
     historicalEventData = {...historicalEventData, map_id: this.props.selectedMap.id}
     formUpload.append("historical_event", JSON.stringify(historicalEventData))
     event.target.reset()
-    fetch("http://localhost:3000/api/v1/historical_events", {
+    fetch("https://young-atoll-53269.herokuapp.com/api/v1/maps", {
       method: "POST",
       body: formUpload
     })
-    .then(r => r.json())
-    .then((historicalEventRes) => {
-      this.setState({
-        title: "",
-        description: "",
-        year: "",
-        latitude: '',
-        longitude: ''
-      },
-      //this.props.addHistoricalEventToMapDataState(historicalEventRes)
-    )
-      this.props.addHistoricalEventToMap(historicalEventRes)
-      // this is where the ADD_EVENT_TO_MAP action should be dispatched
+    .then(r => {
+      console.log(r);
+      // r.json()
     })
+    // .then((historicalEventRes) => {
+    //   console.log(historicalEventRes)
+    //   this.setState({
+    //     title: "",
+    //     description: "",
+    //     year: "",
+    //     latitude: '',
+    //     longitude: ''
+    //   },
+    //   //this.props.addHistoricalEventToMapDataState(historicalEventRes)
+    // )
+    //   this.props.addHistoricalEventToMap(historicalEventRes)
+    //   // this is where the ADD_EVENT_TO_MAP action should be dispatched
+    // })
   }// end of hanldeSubmit
 
   componentDidUpdate(prevProps, prevState){

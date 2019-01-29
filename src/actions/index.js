@@ -2,7 +2,7 @@ import axios from 'axios'
 
 export const addMapDataToState = () => async dispatch => {
 
-  const response = await axios.get("http://localhost:3000/api/v1/maps")
+  const response = await axios.get("https://young-atoll-53269.herokuapp.com/api/v1/maps")
   // console.log(response.data)
 
   dispatch({type: "ADD_MAP_DATA", payload: response.data})
