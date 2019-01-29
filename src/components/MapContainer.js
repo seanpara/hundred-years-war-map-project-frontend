@@ -34,7 +34,7 @@ class MapContainer extends Component {
             sendClickedLatLngToForm={this.sendClickedLatLngToForm}
           />
           {this.state.showEventDescription ? <HistoryEventDescription text={this.state.historyEventDescriptionText}/> : null}
-          <MapDescription mapDescription={this.props.mapDescription}/>
+          <MapDescription />
           <NewHistoricalEventForm
             clickedLatitude = {this.state.clickedLatitude}
             clickedLongitude = {this.state.clickedLongitude}

@@ -84,7 +84,6 @@ class Map extends Component {
   render() {
     const {viewport} = this.state
     const {selectedMap} = this.props
-    console.log("map selected map is:", selectedMap);
     if (!selectedMap || !selectedMap.historical_events ){
       return null
     }
