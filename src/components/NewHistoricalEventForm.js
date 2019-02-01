@@ -36,8 +36,8 @@ class NewHistoricalEventForm extends Component {
       body: formUpload
     })
     .then(r => {
-      console.log(r.json())
-      r.json()
+      let res = r.json()
+      return res
     })
     .then((historicalEventRes) => {
       console.log("historical event res obj is:", historicalEventRes)
