@@ -19,7 +19,7 @@ class Map extends Component {
     viewport: {
         latitude: 49.5,
         longitude: -1.25,
-        zoom: 4,
+        zoom: 3.5,
         bearing: 0,
         pitch: 0,
         width: 700,
@@ -92,7 +92,7 @@ class Map extends Component {
         <MapGL
           {...viewport}
           width="100%"
-          height="500px"
+          height="350px"
           onViewportChange={this.updateViewport}
           mapStyle={selectedMap.url}
           onClick={this.onClickMap}
