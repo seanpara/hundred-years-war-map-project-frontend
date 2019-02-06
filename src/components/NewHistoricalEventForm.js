@@ -24,6 +24,10 @@ class NewHistoricalEventForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
+    if (!this.validate()) {
+      window.alert("Please enter valid information into all form fields")
+      return
+    }
     const historicalEventImage = event.target.querySelector('#file-input').files[0]
     let formUpload = new FormData()
     formUpload.append("image", historicalEventImage)
@@ -56,6 +60,19 @@ class NewHistoricalEventForm extends Component {
   componentDidUpdate(prevProps, prevState){
     if (prevProps.clickedLatitude !== this.props.clickedLatitude && prevProps.clickedLongitude !== this.props.clickedLongitude ){
       this.setState({latitude: this.props.clickedLatitude, longitude: this.props.clickedLongitude})
+    }
+  }
+
+  validate = () => {
+    const file = document.querySelector('#file-input').files[0]
+    if (this.state.title === '' || this.state.description === '' || this.state.description === '' || !file) {
+      return false
+    }
+    else if (typeof this.state.latitude !== "number" && typeof this.state.longitude !== "number" ) {
+      return false
+    }
+    else {
+      return true
     }
   }
 
