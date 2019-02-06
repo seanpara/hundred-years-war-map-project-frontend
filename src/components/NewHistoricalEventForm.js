@@ -24,10 +24,10 @@ class NewHistoricalEventForm extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-    if (!this.validate()) {
-      window.alert("Please enter valid information into all form fields")
-      return
-    }
+    // if (!this.validate()) {
+    //   window.alert("Please enter valid information into all form fields")
+    //   return
+    // }
     const historicalEventImage = event.target.querySelector('#file-input').files[0]
     let formUpload = new FormData()
     formUpload.append("image", historicalEventImage)
@@ -63,22 +63,21 @@ class NewHistoricalEventForm extends Component {
     }
   }
 
-  validate = () => {
-    const file = document.querySelector('#file-input').files[0]
-    if (this.state.title === '' || this.state.description === '' || this.state.description === '' || !file) {
-      return false
-    }
-    else if (typeof this.state.latitude !== "number" && typeof this.state.longitude !== "number" ) {
-      return false
-    }
-    else {
-      return true
-    }
-  }
+  // validate = () => {
+  //   const file = document.querySelector('#file-input').files[0]
+  //   if (this.state.title === '' || this.state.description === '' || this.state.description === '') {
+  //     return false
+  //   }
+  //   else if (typeof this.state.latitude !== "number" && typeof this.state.longitude !== "number" ) {
+  //     return false
+  //   }
+  //   else {
+  //     return true
+  //   }
+  // }
 
   render() {
     return (
-      <div className="historical-event-form-container">
         <form className="historical-event-form"
         onSubmit={this.handleSubmit}>
           <div className="historical-event-form-item">
@@ -153,7 +152,6 @@ class NewHistoricalEventForm extends Component {
             value="Submit"
           />
         </form>
-      </div>
     );
   }
 
