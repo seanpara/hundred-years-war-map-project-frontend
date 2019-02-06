@@ -99,8 +99,8 @@ a {
 
 .navbar {
   display:flex;
-  margin: 10px;
-  font-size: 20px;
+  margin: 0px;
+  font-size: 0px;
   color: black;
   justify-content: center;
   /* margin-left: 20px; */
